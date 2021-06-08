@@ -13,13 +13,14 @@ namespace KeepMeAwake
             Log("Keep me awake started.");
 
             Thread t = new Thread(new ThreadStart(Worker));
+            t.Name = "AWAKE_PROC";
             t.Start();
 
             Log("Press any key to exit.");
             Console.ReadKey();
 
-            mStopFlag.Set();
             Log("Received terminate signal.");
+            mStopFlag.Set();
         }
 
         private static void Worker()
